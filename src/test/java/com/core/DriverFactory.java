@@ -13,19 +13,20 @@ public class DriverFactory {
 	public static WebDriver driver = null;
 	
 	public static WebDriver getDriver() {
-				
+
 		if (driver == null) {
 				
 			String browser = GlobalProperty.getProperty("browser.type");
+			String pathDriver = GlobalProperty.getProperty("path.driver");
 			
 			if (browser.equals("chrome")) {
 		
-				System.setProperty("webdriver.chrome.driver", "/home/antonio/dev/drivers/chromedriver");				
+				System.setProperty("webdriver.chrome.driver", pathDriver+"chromedriver");
 				driver = new ChromeDriver();
 			}
 			
 			if (browser.equals("chrome_headless")) {
-				System.setProperty("webdriver.chrome.driver", "/home/antonio/dev/drivers/chromedriver");
+				System.setProperty("webdriver.chrome.driver", pathDriver+"chromedriver");
 				
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("headless");
@@ -35,12 +36,12 @@ public class DriverFactory {
 			}
 			
 			if (browser.equals("firefox")) {
-				System.setProperty("webdriver.gecko.driver", "/home/antonio/dev/drivers/geckodriver");				
+				System.setProperty("webdriver.gecko.driver", pathDriver+"geckodriver");
 				driver = new FirefoxDriver();
 			}
 			
 			if (browser.equals("firefox_headless")) {
-				System.setProperty("webdriver.gecko.driver", "/home/antonio/dev/drivers/geckodriver");
+				System.setProperty("webdriver.gecko.driver", pathDriver+"geckodriver");
 				
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("--headless");
@@ -52,6 +53,7 @@ public class DriverFactory {
 			}
 			
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
 		}
 		
 		return driver;
