@@ -2,6 +2,7 @@ package com.page;
 
 import static com.core.DriverFactory.getDriver;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
@@ -53,7 +54,7 @@ public class ShadowDomPage extends BasePage {
 		
 	}
 
-//	public MembersTabPage addEmailExternal(String emailExternal){
+//	public void addEmailExternal(String emailExternal){
 //		By externalEmail = $By.shadowRootCss("#app > sfc-shell > sdf-page-layout > div > div > div > sdf-focus-pane > div.flex.flex-row > div.flex.flex-col.pt-6 > div.overflow-scroll > form > div:nth-child(3) > sdf-input#shadow-root #input");
 //
 //		FluentWait<WebDriver> wait = new FluentWait<>(getDriver()).ignoring(Exception.class).pollingEvery(Duration.ofSeconds(1)).withTimeout(Duration.ofSeconds(30));
