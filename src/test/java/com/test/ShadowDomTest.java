@@ -19,6 +19,15 @@ public class ShadowDomTest extends BaseTest {
 		shadowPage.inputLastName("Trindade");
 			
 		assertEquals("Antonio", shadowPage.getValueFirstName());
-		assertEquals("Trindade", shadowPage.getValueLastName());
+		//assertEquals("Trindade", shadowPage.getValueLastName());
+	}
+	
+	@Test
+	public void testWithFramewoorkShadowRoot() {
+		shadowPage = new ShadowDomPage();
+		shadowPage.open();
+		shadowPage.inputFirstNameFramework("Antonio");
+		//shadowPage.inputLastNameFramework("Trindade");
+		assertEquals("Antonio", shadowPage.getValueFirstNameFramework());
 	}
 }

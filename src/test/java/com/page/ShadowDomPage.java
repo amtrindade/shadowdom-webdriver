@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import com.core.BasePage;
 import com.core.GlobalProperty;
 
+import io.github.sukgu.Shadow;
+
 public class ShadowDomPage extends BasePage {
 	
 	
@@ -35,8 +37,6 @@ public class ShadowDomPage extends BasePage {
 	}
 	
 	public ShadowDomPage inputEmail(String email) {
-
-
 		
 		return this;
 	}
@@ -51,6 +51,30 @@ public class ShadowDomPage extends BasePage {
 	public String getValueLastName() {
 		String el = "document.querySelector('my-web-component').myRoot.querySelector('#lname').value";
 		return (String)((JavascriptExecutor)getDriver()).executeScript(el);
+		
+	}
+
+	public ShadowDomPage inputFirstNameFramework(String firstName) {		
+		Shadow shadow = new Shadow(getDriver());
+		WebElement element = shadow.findElement("#fname");
+		element.sendKeys(firstName);
+		return this;
+	}
+
+	public String getValueFirstNameFramework() {
+		//shadow open
+		Shadow shadow = new Shadow(getDriver());
+		WebElement element = shadow.findElement("#fname");
+		
+		return element.getAttribute("value");
+	}
+
+	public ShadowDomPage inputLastNameFramework(String lastName) {
+		//shadow-root closed
+		Shadow shadow = new Shadow(getDriver());
+		WebElement element = shadow.findElement("#lname");
+		element.sendKeys(lastName);
+		return this;
 		
 	}
 
